@@ -79,7 +79,10 @@ update msg model =
             , Cmd.none
             )
 
-        LoadFeed _ ->
+        LoadFeed (Ok photo) ->
+            ( { model | photo = Just photo }, Cmd.none )
+
+        LoadFeed (Err _) ->
             ( model, Cmd.none )
 
 
@@ -120,15 +123,7 @@ baseUrl =
 
 initialModel : Model
 initialModel =
-    { photo =
-        Just
-            { id = 1
-            , url = baseUrl ++ "1.jpg"
-            , caption = "surfing"
-            , liked = False
-            , comments = [ "Cu" ]
-            , newComment = ""
-            }
+    { photo = Nothing
     }
 
 
