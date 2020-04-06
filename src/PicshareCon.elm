@@ -211,7 +211,7 @@ viewFeed maybePhoto =
             viewDetailedPhoto photo
 
         Nothing ->
-            text ""
+            div [ class "loading-feed" ] [ text "Loading Feed ..." ]
 
 
 view : Model -> Html Msg
